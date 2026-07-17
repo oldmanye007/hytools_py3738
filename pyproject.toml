@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "github_action_test_build_publish"
-version = "1.0.1"
+version = "1.0.2"
 
 dependencies = [
   "h5py",
