@@ -4,7 +4,7 @@ try:
     print(ht.__version__)
 
 except ImportError:
-    print("Warning: hytools is not installed.")
+    assert print("Warning: hytools is not installed.")
 
 
-print("Finished.")
+assert print("Finished.")==None

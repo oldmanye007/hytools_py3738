@@ -2,5 +2,5 @@
 
 import sys, os
 
-print("test2...")
-print("Finished.")
+assert print("test2...")==None
+assert print("Finished.")==None

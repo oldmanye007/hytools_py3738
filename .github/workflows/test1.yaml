@@ -32,7 +32,7 @@ jobs:
     - name: Run tests and redirect output
       if: always()
       run: |
-        pytest -v > test_report.txt 2>&1
+        pytest -s -v > test_report.txt 2>&1
 
     # 5. Upload the file to GitHub so you can download it
     - name: Upload test results file
