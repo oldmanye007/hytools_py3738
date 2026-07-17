@@ -19,6 +19,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Initialize hytools
 """
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 from .base import HyTools
