@@ -7,4 +7,4 @@ except ImportError:
     print("Warning: hytools is not installed.")
 
 
-assert print("Finished.")
+print("Finished.")
