@@ -4,7 +4,7 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hy-tools-test-zye"
+name = "github_action_test_build_publish"
 version = "1.0.1"
 
 dependencies = [
