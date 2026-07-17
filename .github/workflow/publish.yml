@@ -1,52 +1,32 @@
-name: Publish to testPyPI
+name: Publish to Test PyPI
 
 on:
-  release:
-      branches:
-          - main
-          - hytools_workflow  # Limits execution to specific branches
-      types: [released] # Triggers ONLY when a release is fully published
-
+  push:
+    branches:
+      - hytools_workflow
+  workflow_dispatch:  # Manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install build dependencies
-        run: pip install build
-
-      - name: Build package
-        run: python -m build
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.10'}
+      - run: |
+          pip install build
+          python -m build
+      - uses: actions/upload-artifact@v4
+        with: {name: dist, path: dist/}
 
   publish:
     needs: build
     runs-on: ubuntu-latest
-    environment: pypi  # Optional: adds deployment protection
-    permissions:
-      id-token: write  # Required for trusted publishing
-
+    permissions: {id-token: write} # Required for OIDC
+    environment: {name: testpypi}
     steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
+        with: {name: dist, path: dist/}
+      - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          name: dist
-          path: dist/
-
-      - name: Publish to TestPyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/        
-        # No credentials needed! Trusted publishing handles it
+          repository-url: https://test.pypi.org/legacy/
