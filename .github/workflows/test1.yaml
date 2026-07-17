@@ -1,6 +1,7 @@
 name: Run Python Tests and Save Output
 
 on: [push, pull_request]
+
   workflow_dispatch:  # Manual trigger
 
 jobs:
