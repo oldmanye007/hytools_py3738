@@ -33,7 +33,6 @@ license-files = ["LICEN[CS]E.*"]
 keywords = ["imaging spectroscopy", "hyperspectral", "remote sensing", "BRDF correction", "sunglint correction", "topographic correction", "brightness normalization"]
 classifiers = [
   "Programming Language :: Python",
-  "License :: OSI Approved :: GPL v3",
 ]
 
 [project.urls]
