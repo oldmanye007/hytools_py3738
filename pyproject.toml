@@ -7,9 +7,6 @@ build-backend = "setuptools.build_meta"
 name = "github_action_test_build_publish"
 version = "1.0.2"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
 dependencies = [
   "h5py",
   "h5netcdf",
@@ -42,3 +39,6 @@ classifiers = [
 Homepage = "https://github.com/EnSpec/hytools"
 Documentation = "https://hytools.readthedocs.io/en/latest/"
 Repository = "https://github.com/EnSpec/hytools.git"
+
+[tool.setuptools.packages.find]
+where = ["src"]
