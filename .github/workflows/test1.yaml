@@ -44,7 +44,7 @@ jobs:
       run: |
           mkdir test_env
           cd test_env
-          pytest -s -v > test_report.txt 2>&1
+          pytest -s -v ../tests  > ../test_report.txt 2>&1
 
 
     # 5. Upload the file to GitHub so you can download it
