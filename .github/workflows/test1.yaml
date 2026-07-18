@@ -1,16 +1,17 @@
 name: Run Python Tests and Save Output
 
-on: workflow_dispatch
-#[push, pull_request]
-# Enables the manual trigger button
+on: [push, pull_request]
+  workflow_dispatch: # Enables the manual trigger button
 
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         python-version: ['3.9','3.10','3.11','3.12']
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     # 1. Fetch your code from the repository
