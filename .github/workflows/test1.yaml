@@ -1,8 +1,8 @@
 name: Run Python Tests and Save Output
 
-on: 
+on: workflow_dispatch
 #[push, pull_request]
-  workflow_dispatch: # Enables the manual trigger button
+# Enables the manual trigger button
 
 
 jobs:
