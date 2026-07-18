@@ -8,3 +8,8 @@ except ImportError:
 
 
 assert print("Finished.")==None
+
+def test_dummy():
+    pass
+
+test_dummy()
