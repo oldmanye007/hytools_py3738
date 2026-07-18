@@ -21,7 +21,7 @@ This module contain functions for generating boolean masks specific to apply ima
 models.
 """
 
-from scipy.ndimage.morphology import binary_erosion
+from scipy.ndimage import binary_erosion
 import numpy as np
 from .cloud import zhai_cloud
 
