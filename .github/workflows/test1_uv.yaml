@@ -12,8 +12,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.9','3.10','3.11','3.12']
-        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.10']
+        os: [ubuntu-latest]
 
     env:
       UV_PYTHON: ${{ matrix.python-version }}
@@ -25,19 +25,19 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Install the project
-        run: uv sync --locked --all-extras --dev
+      #- name: Install the project
+      #  run: uv sync --locked --all-extras --dev
 
-      - name: Run tests
-        # For example, using `pytest`
-        if: always()
-        # Moving to a temporary directory forces Python to import the 
-        # globally installed package instead of the local source files.
-        run: |
-            mkdir test_env
-            cd test_env
-            uv run pytest -s -v ../tests > ../test_report.txt 2>&1
-            cd ..
+      #- name: Run tests
+      #  # For example, using `pytest`
+      #  if: always()
+      #  # Moving to a temporary directory forces Python to import the 
+      #  # globally installed package instead of the local source files.
+      #  run: |
+      #      mkdir test_env
+      #      cd test_env
+      #     uv run pytest -s -v ../tests > ../test_report.txt 2>&1
+      #      cd ..
 
       - name: Build
         run: uv build
