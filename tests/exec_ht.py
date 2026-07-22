@@ -91,11 +91,13 @@ print(envi_obj.map_info)
 #band = np.copy(band).astype(np.float32)
 #band[~envi_obj.mask['no_data']] = np.nan
 
-fig, ax = plt.subplots(2,3,figsize=(9,10))
+fig, ax = plt.subplots(2,4,figsize=(9,10))
 #plt.matshow(band)
 #ax[0,0].matshow(band)
 
 #ax[1,0].matshow(envi_obj.mask['no_data'])
+
+ax[0,3].matshow(envi_obj.mask['no_data'])
 
 show_rgb(envi_obj,ax[0,0],r=660,g=550,b=440, correct= [])
 ax[0,0].set_title("L2 Reflectance")
@@ -153,4 +155,4 @@ ax[0,2].set_title("Sunglint correct region")
 
 #ax[1,2].imshow(envi_obj.mask['apply_brdf'])
 
-fig.savefig(f"{out_dir}/test_plot.png")
+fig.savefig(f"{out_dir}/ci_test_plot.png")
