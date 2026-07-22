@@ -40,7 +40,7 @@ def show_rgb(hy_obj,ax,r=660,g=550,b=440, correct= []):
                     hy_obj.get_wave(g,corrections= correct),
                     hy_obj.get_wave(b,corrections= correct)])
     rgb = np.moveaxis(rgb,0,-1).astype(float)
-    rgb[rgb ==hy_obj.no_data] = np.nan
+    #rgb[rgb ==hy_obj.no_data] = np.nan
 
     bottom = np.nanpercentile(rgb,5,axis = (0,1))
     top = np.nanpercentile(rgb,95,axis = (0,1))
@@ -157,5 +157,5 @@ ax[0,2].set_title("Sunglint correct region")
 
 #ax[1,2].imshow(envi_obj.mask['apply_brdf'])
 
-#fig.savefig(f"{out_dir}/ci_test_plot.png")
-fig.savefig(f"{out_dir}/ci_test_plot.pdf", bbox_inches="tight")
+fig.savefig(f"{out_dir}/ci_test_plot.png")
+#fig.savefig(f"{out_dir}/ci_test_plot.pdf", bbox_inches="tight")
