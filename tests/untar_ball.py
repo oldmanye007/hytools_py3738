@@ -179,5 +179,5 @@ def extract_obs_ort(intar, indir, out_dir, file_tag_obs):
 year_tag, ftp_path, file_tag_rfl, file_tag_obs = generate_download_tag(intar)
 print(year_tag, ftp_path, file_tag_rfl, file_tag_obs)
 
-#extract_refl(intar, indir, out_dir, file_tag_rfl)
+extract_refl(intar, indir, out_dir, file_tag_rfl)
 extract_obs_ort(intar, indir, out_dir, file_tag_obs)
