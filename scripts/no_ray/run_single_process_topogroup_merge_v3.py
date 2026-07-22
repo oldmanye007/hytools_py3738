@@ -1,8 +1,11 @@
 
 
-import sys, os, time
+import sys
+import os
+import time
 import multiprocessing
-import subprocess, json
+import subprocess
+import json
 
 exec_str="python ../noray/image_correct_get_raw_sample_chtc.py "
 
