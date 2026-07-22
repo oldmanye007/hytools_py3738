@@ -157,4 +157,5 @@ ax[0,2].set_title("Sunglint correct region")
 
 #ax[1,2].imshow(envi_obj.mask['apply_brdf'])
 
-fig.savefig(f"{out_dir}/ci_test_plot.png")
+#fig.savefig(f"{out_dir}/ci_test_plot.png")
+fig.savefig(f"{out_dir}/ci_test_plot.pdf", bbox_inches="tight")
