@@ -45,10 +45,12 @@ def show_rgb(hy_obj,ax,r=660,g=550,b=440, correct= []):
     bottom = np.nanpercentile(rgb,5,axis = (0,1))
     top = np.nanpercentile(rgb,95,axis = (0,1))
     rgb = np.clip(rgb,bottom,top)
+    print('bottom:',bottom)
+    print('top:',top)
 
     rgb = (rgb-np.nanmin(rgb,axis=(0,1)))/(np.nanmax(rgb,axis= (0,1))-np.nanmin(rgb,axis= (0,1)))
 
-    height = int(hy_obj.lines/hy_obj.columns)
+    #height = int(hy_obj.lines/hy_obj.columns)
 
     #fig  = plt.figure(figsize = (7,7) )
     ax.imshow(rgb)
