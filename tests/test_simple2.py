@@ -1,11 +1,8 @@
 
-
-import sys, os, subprocess
-
-assert print("test2...")==None
-assert print("Finished.")==None
+assert print("test2...") is None
+assert print("Finished.") is None
 
 def test_dummy():
-    pass
+    return True
 
 test_dummy()

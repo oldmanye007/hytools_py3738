@@ -1,5 +1,6 @@
 
-import sys, os
+import sys
+import os
 import tarfile
 
 intar = sys.argv[1]

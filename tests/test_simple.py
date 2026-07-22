@@ -7,7 +7,7 @@ except ImportError:
     assert print("Warning: hytools is not installed.")
 
 
-assert print("Finished.")==None
+assert print("Finished.") is None
 
 def test_dummy():
     pass
