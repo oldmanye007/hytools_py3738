@@ -51,7 +51,9 @@ jobs:
       run: |
           mkdir test_env
           cd test_env
+          ls -l > ../test_report.txt 2>&1
           curl -R -L -k -O https://popo.jpl.nasa.gov/avcl/y13_data/f130410t01p00r09_refl.tar.gz
+          ls -l > ../test_report.txt 2>&1
           curl -R -L -k -O https://popo.jpl.nasa.gov/avcl/y13_data/f130410t01p00r09.tar.gz
           ls -l > ../test_report.txt 2>&1
           python3  ../tests/untar_ball.py f130410t01p00r09 ./ ./ > ../test_report.txt 2>&1
