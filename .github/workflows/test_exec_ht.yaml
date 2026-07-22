@@ -68,4 +68,4 @@ jobs:
         name: python-test-output
         path: |
             test_report.txt
-            test_plot.png
+            ci_test_plot.png
