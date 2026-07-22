@@ -140,7 +140,7 @@ ax[1,0].set_title("TOPO-BRDF corrected RGB")
 band_corr_ratio = envi_obj.get_wave(550,corrections=['topo','brdf']) / envi_obj.get_wave(550,corrections=[])
 #band_corr_diff = envi_obj.get_wave(550,corrections=['glint']) - envi_obj.get_wave(550,corrections=[])
 ax[1,1].imshow(band_corr_ratio)
-ax[1,1].set_title("TOPO-BRDF correcting ratio")
+ax[1,1].set_title("TOPO-BRDF correcting ratio (around 550nm)")
 
 #print(np.count_nonzero(np.isnan(band_corr_ratio)))
 
