@@ -17,7 +17,7 @@ import correct_setting
 envi_image= sys.argv[1] #f130410t01p00r09rdn_refl_img_corr
 obs_ort_image = sys.argv[2]  #f130410t01p00r09rdn_e_obs_ort
 
-cmap = plt.cm.viridis.copy()
+cmap = plt.cm.gray.copy()
 cmap.set_bad(color='none')
 
 out_dir = sys.argv[3]  #"./data/"
@@ -94,13 +94,13 @@ print(envi_obj.map_info)
 #band = np.copy(band).astype(np.float32)
 #band[~envi_obj.mask['no_data']] = np.nan
 
-fig, ax = plt.subplots(2,4,figsize=(9,10))
+fig, ax = plt.subplots(2,3,figsize=(9,10))
 #plt.matshow(band)
 #ax[0,0].matshow(band)
 
 #ax[1,0].matshow(envi_obj.mask['no_data'])
 
-ax[0,3].matshow(envi_obj.mask['no_data'])
+#ax[0,3].matshow(envi_obj.mask['no_data'])
 
 show_rgb(envi_obj,ax[0,0],r=660,g=550,b=440, correct= [])
 ax[0,0].set_title("L2 Reflectance")
@@ -146,17 +146,18 @@ ax[1,1].set_title("TOPO-BRDF correcting ratio")
 
 #ax[1,1].imshow(envi_obj.mask['apply_topo'])
 region2 = envi_obj.mask['calc_brdf'] #.copy()
-region2[np.isnan(band_corr_ratio)] = np.nan
+#region2[np.isnan(band_corr_ratio)] = np.nan
 ax[1,2].imshow(region2,cmap=cmap)
 ax[1,2].set_title("TOPO-BRDF correct region")
 
 region1 = envi_obj.mask['apply_glint'] #.copy()
-region1[np.isnan(band_corr_ratio)] = np.nan
+#region1[np.isnan(band_corr_ratio)] = np.nan
 ax[0,2].imshow(region1,cmap=cmap)
 ax[0,2].set_title("Sunglint correct region")
 
 
 #ax[1,2].imshow(envi_obj.mask['apply_brdf'])
 
+fig.tight_layout()
 fig.savefig(f"{out_dir}/ci_test_plot.png")
 #fig.savefig(f"{out_dir}/ci_test_plot.pdf", bbox_inches="tight")
