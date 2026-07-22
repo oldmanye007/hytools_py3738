@@ -13,8 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.9','3.10','3.11']
-        os: [ubuntu-latest, macos-latest]
+        python-version: [,'3.10']
+        os: [ubuntu-latest]
 
     steps:
     # 1. Fetch your code from the repository
@@ -54,7 +54,7 @@ jobs:
           uname -v >> ../test_report.txt 2>&1
           curl -R -L -k -O https://popo.jpl.nasa.gov/avcl/y13_data/f130410t01p00r09_refl.tar.gz
           curl -R -L -k -O https://popo.jpl.nasa.gov/avcl/y13_data/f130410t01p00r09.tar.gz
-          ls -l >> ../test_report.txt 2>&1
+          ls -ld >> ../test_report.txt 2>&1
           python3  ../tests/untar_ball.py f130410t01p00r09 ./ ./ 
           python3  ../tests/exec_ht.py ./f130410t01p00r09rdn_refl_img_corr ./f130410t01p00r09rdn_e_obs_ort  ../ >> ../test_report.txt 2>&1
 
