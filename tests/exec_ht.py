@@ -41,7 +41,7 @@ def show_rgb(hy_obj,ax,r=660,g=550,b=440, correct= []):
                     hy_obj.get_wave(b,corrections= correct)])
     rgb = np.moveaxis(rgb,0,-1).astype(float)
     #rgb[rgb ==hy_obj.no_data] = np.nan
-    print("hy_obj.no_data",hy_obj.no_data)
+    #print("hy_obj.no_data",hy_obj.no_data)
 
     bottom = np.nanpercentile(rgb,5,axis = (0,1))
     top = np.nanpercentile(rgb,95,axis = (0,1))
@@ -103,14 +103,14 @@ fig, ax = plt.subplots(2,3,figsize=(9,10))
 #ax[0,3].matshow(envi_obj.mask['no_data'])
 
 show_rgb(envi_obj,ax[0,0],r=660,g=550,b=440, correct= [])
-ax[0,0].set_title("L2 Reflectance")
+ax[0,0].set_title("L2 Reflectance RGB")
 
 #set_glint(envi_obj,glint_setting)
 set_glint(envi_obj,correct_setting.glint_setting_gao)
 
 #print(envi_obj.corrections)
 show_rgb(envi_obj,ax[0,1],r=660,g=550,b=440, correct= ['glint'])
-ax[0,1].set_title("Sunglint corrected")
+ax[0,1].set_title("Sunglint corrected RGB")
 
 
 #band_corr_ratio = envi_obj.get_wave(550,corrections=['glint']) / envi_obj.get_wave(550,corrections=[])
@@ -134,7 +134,7 @@ combine_data_dict["kernels_samples"] = combine_data_dict.pop("kernel_samples")
 calc_flex_single_post(combine_data_dict,correct_setting.brdf_dict,0)
 
 show_rgb(envi_obj,ax[1,0],r=660,g=550,b=440, correct= ['topo','brdf'])
-ax[1,0].set_title("TOPO-BRDF corrected")
+ax[1,0].set_title("TOPO-BRDF corrected RGB")
 
 
 band_corr_ratio = envi_obj.get_wave(550,corrections=['topo','brdf']) / envi_obj.get_wave(550,corrections=[])
