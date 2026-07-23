@@ -63,10 +63,10 @@ def universal_diagno_plot(hy_obj,config_dict):
     fig.suptitle(hy_obj.base_name)
     for a,band_num in enumerate(bands,start=1):
         ax = fig.add_subplot(2,2,a)
-        ax.plot(diagno_df.index,diagno_df['brdf_%s' % band_num],c='k',ls ='--')
-        ax.scatter(diagno_df.index,diagno_df['uncorr_%s' % band_num],marker ='o',fc='w',ec='k')
-        ax.scatter(diagno_df.index,diagno_df['corr_%s' % band_num],marker ='o',fc='k',ec='k')
-        ax.text(.85,.9, "%s nm" % int(hy_obj.wavelengths[band_num]), transform=ax.transAxes,
+        ax.plot(diagno_df.index,diagno_df[f'brdf_{band_num}'],c='k',ls ='--')
+        ax.scatter(diagno_df.index,diagno_df[f'uncorr_{band_num}'],marker ='o',fc='w',ec='k')
+        ax.scatter(diagno_df.index,diagno_df[f'corr_{band_num}'],marker ='o',fc='k',ec='k')
+        ax.text(.85,.9, f"{int(hy_obj.wavelengths[band_num])} nm", transform=ax.transAxes,
                 ha = 'center', fontsize = 12)
         if a > 2:
             ax.set_xlabel('View zenith angle')
@@ -83,7 +83,7 @@ def universal_diagno_plot(hy_obj,config_dict):
     ax.legend(handles=custom_points, loc='center',frameon=False,
               bbox_to_anchor=(-.15, -.3), ncol =3,columnspacing = 1.5,labelspacing=.25)
 
-    plt.savefig("%s%s_brdf_plot.png" % (config_dict['export']['output_dir'],hy_obj.base_name),
+    plt.savefig(f"{config_dict['export']['output_dir']}{hy_obj.base_name}_brdf_plot.png",
                 bbox_inches = 'tight')
     plt.close()
 

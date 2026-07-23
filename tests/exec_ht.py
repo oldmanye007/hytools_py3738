@@ -2,6 +2,8 @@
 # python /home/ye6/hys_test/test_ftps/data/exec_ht.py /home/ye6/hys_test/test_ftps/data/f130410t01p00r09rdn_refl_img_corr  /home/ye6/hys_test/test_ftps/data/f130410t01p00r09rdn_e_obs_ort  /home/ye6/hys_test/test_ftps/data/
 
 import sys
+import numpy as np
+import matplotlib.pyplot as plt
 
 #sys.path.append('/home/ye6/hys_test/gdrive_test/temp/for_netcdf_chtc_grouptopo')
 
@@ -9,18 +11,15 @@ import hytools as ht
 from hytools.misc import set_glint
 from hytools.topo.topo import calc_topo_coeffs_single
 from hytools.brdf.brdf import calc_brdf_coeffs_pre,calc_flex_single_post  #calc_brdf_coeffs
-import matplotlib.pyplot as plt
-import numpy as np
 
 import correct_setting
 
 envi_image= sys.argv[1] #f130410t01p00r09rdn_refl_img_corr
 obs_ort_image = sys.argv[2]  #f130410t01p00r09rdn_e_obs_ort
+out_dir = sys.argv[3]  #"./data/"
 
 cmap = plt.cm.gray.copy()
 cmap.set_bad(color='none')
-
-out_dir = sys.argv[3]  #"./data/"
 
 anc_data = {'path_length': [obs_ort_image, 0],
  'sensor_az': [obs_ort_image, 1],
@@ -34,7 +33,10 @@ anc_data = {'path_length': [obs_ort_image, 0],
  'utc_time': [obs_ort_image, 9]}
 
 
-def show_rgb(hy_obj,ax,r=660,g=550,b=440, correct= []):
+def show_rgb(hy_obj,ax,r=660,g=550,b=440, correct=None):
+
+    if correct is None:
+        correct = []
 
     rgb=  np.stack([hy_obj.get_wave(r,corrections= correct),
                     hy_obj.get_wave(g,corrections= correct),

@@ -1,6 +1,6 @@
 
-import sys
 import os
+import sys
 import tarfile
 
 intar = sys.argv[1]
@@ -29,8 +29,8 @@ def generate_download_tag(intar):
             print("Not the right year.")
             sys.exit(1)
 
-        file_tag_rfl = "{}rfl.tar.gz".format(intar)
-        file_tag_obs ="{}.tar.gz".format(intar)
+        file_tag_rfl = f"{intar}rfl.tar.gz"
+        file_tag_obs =f"{intar}.tar.gz"
 
     elif intar.startswith('f'):
         # AVC
@@ -44,8 +44,8 @@ def generate_download_tag(intar):
             #sys.exit(1)  
 
         #file_tag_rfl = "{}rfl.tar.gz".format(intar)
-        file_tag_rfl = "{}_refl.tar.gz".format(intar)
-        file_tag_obs = "{}.tar.gz".format(intar)
+        file_tag_rfl = f"{intar}_refl.tar.gz"
+        file_tag_obs = f"{intar}.tar.gz"
 
     else:
         sys.exit(1)
@@ -58,6 +58,8 @@ def extract_refl(intar, indir, out_dir, file_tag_rfl):
     #tar = tarfile.open(indir+'/'+intar+'rfl.tar.gz', "r:gz")
     #tar = tarfile.open(indir+'/'+file_tag_rfl, "r:gz")
     with tarfile.open(indir+'/'+file_tag_rfl, "r:gz") as tar:
+        tar_folder_name=None
+        version_tag=''
         for tarinfo in tar:
             print(tarinfo.name,tarinfo.isdir(),tarinfo.isreg())
             #print(tarinfo.name, "is", tarinfo.size, "bytes in size and is", end="")
@@ -83,7 +85,8 @@ def extract_refl(intar, indir, out_dir, file_tag_rfl):
                         os.rename(os.path.join(out_dir,tarinfo.name+'.hdr'),os.path.join(out_dir,base_name+'.hdr'))
                         os.rename(os.path.join(out_dir,tarinfo.name),os.path.join(out_dir,base_name))
 
-                        os.rmdir(os.path.join(out_dir, tar_folder_name))
+                        if tar_folder_name is not None:
+                            os.rmdir(os.path.join(out_dir, tar_folder_name))
 
                         break
 
@@ -93,13 +96,12 @@ def extract_refl(intar, indir, out_dir, file_tag_rfl):
                     tar_folder_name = tarinfo.name
                     dir_name_list = tarinfo.name.split('_')
                     if dir_name_list[-1].startswith('v'):
-                      version_tag = dir_name_list[-1]
+                        version_tag = dir_name_list[-1]
                     elif dir_name_list[-2].startswith('v'):
-                      version_tag = dir_name_list[-2]
+                        version_tag = dir_name_list[-2]
                     #break
                 else:
                     print(" something else.")
-                    version_tag = None
                 #print(version_tag)
               
             elif intar.startswith('f'):
@@ -141,7 +143,8 @@ def extract_obs_ort(intar, indir, out_dir, file_tag_obs):
 #tar = tarfile.open(indir+'/'+intar+'.tar.gz', "r:gz")
     with tarfile.open(indir+'/'+file_tag_obs, "r:gz") as tar:
     #tar = tarfile.open(indir+'/'+file_tag_obs, "r:gz")
-
+        tar_folder_name = None
+        version_tag = ''
         for tarinfo in tar:
             #print(tarinfo.name)
             #print(tarinfo.name, "is", tarinfo.size, "bytes in size and is", end="")
@@ -160,7 +163,8 @@ def extract_obs_ort(intar, indir, out_dir, file_tag_obs):
                     os.rename(os.path.join(out_dir,tarinfo.name+'.hdr'),os.path.join(out_dir,base_name+'.hdr'))
                     os.rename(os.path.join(out_dir,tarinfo.name),os.path.join(out_dir,base_name))
 
-                    os.rmdir(os.path.join(out_dir, tar_folder_name))
+                    if tar_folder_name is not None:
+                        os.rmdir(os.path.join(out_dir, tar_folder_name))
 
                     break
             elif tarinfo.isdir():
@@ -174,8 +178,8 @@ def extract_obs_ort(intar, indir, out_dir, file_tag_obs):
                 #break
             else:
                 print(" something else.")
-                version_tag = ''
-                tar_folder_name = ''
+                #version_tag = ''
+                #tar_folder_name = ''
         #print(version_tag)
         print(base_name)
       #tar.close()
