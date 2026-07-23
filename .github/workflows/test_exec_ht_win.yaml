@@ -2,7 +2,7 @@
 
 name: Run Tests with external image and Save Output - Win
 
-on: pull_request
+on: [push, pull_request]
   #[push, pull_request]
   #workflow_dispatch: # Enables the manual trigger button
 
@@ -58,8 +58,8 @@ jobs:
           Get-ComputerInfo -Property WindowsProductName, WindowsVersion, OsVersion >> ../test_report.txt 2>&1
           curl -R -L -k -O https://popo.jpl.nasa.gov/avcl/y13_data/f130410t01p00r09_refl.tar.gz
           curl -R -L -k -O https://popo.jpl.nasa.gov/avcl/y13_data/f130410t01p00r09.tar.gz
+          python3  ../tests/untar_ball.py f130410t01p00r09 ./ ./
           Get-ChildItem | Select-Object Mode, LastWriteTime, Length, FullName >> ../test_report.txt 2>&1
-          python3  ../tests/untar_ball.py f130410t01p00r09 ./ ./ 
           python3  ../tests/exec_ht.py ./f130410t01p00r09rdn_refl_img_corr ./f130410t01p00r09rdn_e_obs_ort  ../ >> ../test_report.txt 2>&1
 
 
