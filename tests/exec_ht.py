@@ -79,7 +79,12 @@ def get_wave(wave,wavelengths):
         band_ind = np.argmin(np.abs(wavelengths - wave))
     return band_ind
 
+print(sys.version)
+
+
 envi_obj = ht.HyTools()
+print(ht.__version__)
+
 envi_obj.read_file(envi_image,'envi',anc_path=anc_data)
 
 brdf_internal_dict = {}
@@ -121,7 +126,9 @@ ax[0,1].set_title("Sunglint corrected RGB")
 
 calc_topo_coeffs_single(envi_obj,correct_setting.topo_dict)
 
+print("Calculating BRDF correction coefficients ...")
 brdf_internal_dict['brdf'] = correct_setting.brdf_dict
+
 combine_data_dict = calc_brdf_coeffs_pre(envi_obj,brdf_internal_dict)
 combine_data_dict['bad_bands'] = envi_obj.bad_bands
 #print(combine_data_dict["reflectance_samples"].shape)
