@@ -79,11 +79,11 @@ def get_wave(wave,wavelengths):
         band_ind = np.argmin(np.abs(wavelengths - wave))
     return band_ind
 
-print(sys.version)
+print(f"Python version: {sys.version}")
 
 
 envi_obj = ht.HyTools()
-print(ht.__version__)
+print(f"HyTools version: {ht.__version__}")
 
 envi_obj.read_file(envi_image,'envi',anc_path=anc_data)
 
@@ -166,6 +166,8 @@ ax[0,2].set_title("Sunglint correct region")
 
 
 #ax[1,2].imshow(envi_obj.mask['apply_brdf'])
+
+fig.suptitle(f"Line: {envi_image}", fontsize=16)
 
 fig.tight_layout()
 fig.savefig(f"{out_dir}/ci_test_plot.png")
