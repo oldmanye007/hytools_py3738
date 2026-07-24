@@ -1,6 +1,7 @@
 
 # python /home/ye6/hys_test/test_ftps/data/exec_ht.py /home/ye6/hys_test/test_ftps/data/f130410t01p00r09rdn_refl_img_corr  /home/ye6/hys_test/test_ftps/data/f130410t01p00r09rdn_e_obs_ort  /home/ye6/hys_test/test_ftps/data/
 
+import os
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
@@ -167,7 +168,7 @@ ax[0,2].set_title("Sunglint correct region")
 
 #ax[1,2].imshow(envi_obj.mask['apply_brdf'])
 
-fig.suptitle(f"Line: {envi_image}", fontsize=16)
+fig.suptitle(f"Line: {os.path.basename(envi_image)}", fontsize=12)
 
 fig.tight_layout()
 fig.savefig(f"{out_dir}/ci_test_plot.png")
