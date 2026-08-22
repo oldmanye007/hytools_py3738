@@ -35,6 +35,10 @@ share/python-wheels/
 MANIFEST
 .ipynb_checkpoints
 
+
 make.bat
 Makefile
 *~
+
+src/hytools/_version.py
+*.bak

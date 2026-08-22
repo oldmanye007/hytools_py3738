@@ -1,11 +1,15 @@
 
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools >= 77.0.3","setuptools-scm>=8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hy-tools-test-zye"
-version = "1.6.3"
+name = "hy-tools"
+dynamic = ["version"]
+
+[tool.setuptools_scm]
+# This enables the plugin and writes the version out to a file
+write_to = "src/hytools/_version.py"
 
 dependencies = [
   "h5py",
@@ -30,7 +34,7 @@ description = "HyTools: Hyperspectral image processing library"
 readme = "README.md"
 license = "GPL-3.0-only"
 license-files = ["LICEN[CS]E.*"]
-keywords = ["imaging spectroscopy", "hyperspectral", "remote sensing", "BRDF correction", "sunglint correction", "topographic correction", "brightness normalization"]
+keywords = ["imaging spectroscopy", "hyperspectral", "remote sensing", "BRDF correction", "glint correction", "topographic correction", "brightness normalization"]
 classifiers = [
   "Programming Language :: Python",
 ]
@@ -39,6 +43,3 @@ classifiers = [
 Homepage = "https://github.com/EnSpec/hytools"
 Documentation = "https://hytools.readthedocs.io/en/latest/"
 Repository = "https://github.com/EnSpec/hytools.git"
-
-[tool.setuptools.packages.find]
-where = ["src"]
