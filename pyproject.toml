@@ -42,3 +42,6 @@ write_to = "src/hytools/_version.py"
 Homepage = "https://github.com/EnSpec/hytools"
 Documentation = "https://hytools.readthedocs.io/en/latest/"
 Repository = "https://github.com/EnSpec/hytools.git"
+
+[tool.setuptools.packages.find]
+where = ["src"]
