@@ -29,6 +29,6 @@ except ImportError:
     # Fallback for when the package is installed but _version.py is missing
     try:
         from importlib.metadata import version
-        __version__ = version("hy-tools")
+        __version__ = version("hy-tools-test-zye")
     except Exception:
         __version__ = "0.0.1.dev0+unknown"    
