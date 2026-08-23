@@ -20,7 +20,9 @@ jobs:
     # 1. Fetch your code from the repository
     - name: Checkout code
       uses: actions/checkout@v4
-
+      with:
+        fetch-depth: 0
+        
     # 2. Set up the Python environment
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
@@ -34,9 +36,7 @@ jobs:
         python -m pip install build pytest
 
     - name: Build package artifacts
-      run: |
-        echo "The release tag is ${{ github.event.release.tag_name }}"
-        python -m build
+      run: python -m build
 
     - name: Install built wheel
       # Installs the generated .whl file from the dist/ folder
