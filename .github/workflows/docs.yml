@@ -31,6 +31,7 @@ jobs:
           pip install sphinx sphinx-rtd-theme myst-parser
           # If you use a requirements file for docs, uncomment below:
           # pip install -r docs/requirements.txt
+          python -m pip install build
 
       - name: Build package artifacts
         run: python -m build
