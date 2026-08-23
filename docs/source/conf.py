@@ -29,7 +29,8 @@ author = 'Adam Chlus'
 
 
 try:
-    release = get_version("hy-tools-test-zye")
+    #release = get_version("hy-tools-test-zye")
+    release = get_version(root="..", relative_to=__file__)
     version = ".".join(release.split(".")[:3]) # e.g., "1.2" from "1.2.3"
 except Exception:
     release = "0.0.0"
