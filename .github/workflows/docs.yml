@@ -32,6 +32,13 @@ jobs:
           # If you use a requirements file for docs, uncomment below:
           # pip install -r docs/requirements.txt
 
+      - name: Build package artifacts
+        run: python -m build
+
+      - name: Install built wheel
+        # Installs the generated .whl file from the dist/ folder
+        run: python -m pip install dist/*.whl
+
       - name: Build HTML Documentation
         run: |
           # Change directory to where your Makefile / conf.py resides (usually 'docs')

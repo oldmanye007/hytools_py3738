@@ -2,7 +2,7 @@ HyTools Documentation
 =====================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    contents	      
    installation
@@ -14,4 +14,4 @@ HyTools Documentation
    separated_flexbrdf_rtd.md
    algorithms.rst
    command_line
-   .. modules
+   modules
