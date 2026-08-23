@@ -95,3 +95,7 @@ source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
 }
+
+html_theme_options = {
+    'display_version': True,
+}
