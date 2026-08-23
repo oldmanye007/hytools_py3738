@@ -14,4 +14,4 @@ HyTools Documentation
    separated_flexbrdf_rtd.md
    algorithms.rst
    command_line
-   modules
+   .. modules
